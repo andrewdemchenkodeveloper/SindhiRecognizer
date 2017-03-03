@@ -1,3 +1,4 @@
+import sys
 import cv2
 import argparse
 import warnings
@@ -5,6 +6,9 @@ import warnings
 from time import time
 from docx import Document
 from sklearn.externals import joblib
+
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 # ignore version warnings
 def warn(*args, **kwargs):
@@ -38,7 +42,9 @@ result = model.predict(image)
 # print the results
 document = Document('txt/{}.docx'.format(result[0]))
 for para in document.paragraphs:
-    print(para.text)
+    print (para.text)
+
+document.save('output.docx')
 
 #end timer
 end_time = time() - start_time

@@ -1,0 +1,8 @@
+version: "2"
+services:
+  pycv:
+    build: ./docker/images/opencv
+    volumes:
+        - .:/code
+    working_dir: /code
+    command: /bin/bash -c "python SVM_Classifier.py -i img/16.JPG"
